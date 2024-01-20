@@ -1,0 +1,12 @@
+sudo: required
+services: 
+  - docker
+
+# we can use any tag name but this is a good practice
+before_tests:
+  - docker build -t saisivadurgaprasad/demo_routing -f Dockerfile.dev . 
+
+# run the tests, exit with status code 0, otherwise since npm run test wont return anything, it might
+# think since nothing is been returned and status code might be non-zero
+script:
+  - docker run -e CI=true saisivadurgaprasad/demo_routing npm run test
