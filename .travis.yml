@@ -3,7 +3,7 @@ services:
   - docker
 
 # we can use any tag name but this is a good practice
-before_tests:
+before_install:
   - docker build -t saisivadurgaprasad/demo_routing -f Dockerfile.dev . 
 
 # run the tests, exit with status code 0, otherwise since npm run test wont return anything, it might
