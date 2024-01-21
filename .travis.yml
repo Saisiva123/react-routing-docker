@@ -10,3 +10,15 @@ before_install:
 # think since nothing is been returned and status code might be non-zero
 script:
   - docker run -e CI=true saisivadurgaprasad/demo_routing npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "React-app"
+  env: "React-app-env"
+  bucket_name: "elasticbeanstalk-us-east-2-654452807680"
+  bucket_path: "React-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key_id: "$AWS_SECRET_KEY"
